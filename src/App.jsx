@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Header from "./components/Header";
 import UserInput from "./components/UserInput";
+import Result from "./components/Result";
 
 function App() {
   const [userData, setUserData] = useState({
@@ -14,7 +15,7 @@ function App() {
     setUserData((prevUserInput) => {
       return {
         ...prevUserInput,
-        [identifier]: newValue,
+        [identifier]: +newValue,
       };
     });
   }
@@ -22,6 +23,7 @@ function App() {
     <>
       <Header />
       <UserInput sendDataUtoA={handleChange} userData={userData} />
+      <Result input={userData} />
     </>
   );
 }
