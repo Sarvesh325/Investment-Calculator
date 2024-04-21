@@ -1,22 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-function UserInput() {
-  const [userData, setUserData] = useState({
-    initialInvestment: 10000,
-    annualInvestment: 1200,
-    expectedReturn: 6,
-    duration: 10,
-  });
-
-  function handleChange(identifier, newValue) {
-    setUserData((prevUserInput) => {
-      return {
-        ...prevUserInput,
-        [identifier]: newValue,
-      };
-    });
-  }
-
+function UserInput({ sendDataUtoA, userData }) {
   return (
     <>
       <section id="user-input">
@@ -28,7 +12,7 @@ function UserInput() {
               required
               value={userData.initialInvestment}
               onChange={(e) =>
-                handleChange("initialInvestment", e.target.value)
+                sendDataUtoA("initialInvestment", e.target.value)
               }
             />
           </p>
@@ -38,7 +22,7 @@ function UserInput() {
               type="number"
               required
               value={userData.annualInvestment}
-              onChange={(e) => handleChange("annualInvestment", e.target.value)}
+              onChange={(e) => sendDataUtoA("annualInvestment", e.target.value)}
             />
           </p>
         </div>
@@ -49,7 +33,7 @@ function UserInput() {
               type="number"
               required
               value={userData.expectedReturn}
-              onChange={(e) => handleChange("expectedReturn", e.target.value)}
+              onChange={(e) => sendDataUtoA("expectedReturn", e.target.value)}
             />
           </p>
           <p>
@@ -58,7 +42,7 @@ function UserInput() {
               type="number"
               required
               value={userData.duration}
-              onChange={(e) => handleChange("duration", e.target.value)}
+              onChange={(e) => sendDataUtoA("duration", e.target.value)}
             />
           </p>
         </div>
