@@ -19,11 +19,15 @@ function App() {
       };
     });
   }
+
+  const isInputValid = userData.duration >= 1;
+
   return (
     <>
       <Header />
       <UserInput sendDataUtoA={handleChange} userData={userData} />
-      <Result input={userData} />
+      {!isInputValid && <p className="center">Please Select Valid Duration</p>}
+      {isInputValid && <Result input={userData} />}
     </>
   );
 }
